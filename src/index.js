@@ -7,9 +7,12 @@ import axios from 'axios';
 
 /*
     You can set a default (or configuration) for all axios requests
+    The following defaults are illustrations
 */
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.headers.common['Authorization'] = 'an AUTH TOKEN that you might need to pass';
+axios.defaults.headers.post['Content-Type'] = 'application/json'; //<- this is already the default, just an example
 
 /*  all axios requests pass through this interceptor first
     You must return the request or you will block requests
