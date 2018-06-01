@@ -5,6 +5,12 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios';
 
+/*
+    You can set a default (or configuration) for all axios requests
+*/
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
 /*  all axios requests pass through this interceptor first
     You must return the request or you will block requests
     since this is a "pass through function".  If you want,
