@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+//import our instance of axios
+//notice that the interceptor is on logging anything anymore.
+// the interceptor is logging for global axios object, not the instance (which blog.js is using)
+//import axios from 'axios';
+import axios from '../../axios';
+
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
