@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 
 //import our instance of axios
 //notice that the interceptor is on logging anything anymore.
 // the interceptor is logging for global axios object, not the instance (which blog.js is using)
 //import axios from 'axios';
 import Posts from './Posts/Posts';
+import NewPost from './NewPost/NewPost';
 import './Blog.css';
 
 class Blog extends Component {
@@ -14,12 +16,18 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/new-post">New Post</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/new-post">New Post</Link></li>
+              {/* <li><Link to={{
+                pathname: '/new-post',
+                hash: '#submit',
+                search: '?quck-submit=true'
+              }}>New Post</Link></li> */}
             </ul>
           </nav>
         </header>
-        <Posts />
+        <Route path="/" exact component={ Posts } />
+        <Route path="/new-post" component={ NewPost } />
       </div>
     );
   }
