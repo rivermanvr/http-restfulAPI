@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 //import our instance of axios
 //notice that the interceptor is on logging anything anymore.
@@ -16,13 +16,23 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/new-post">New Post</Link></li>
-              {/* <li><Link to={{
+            { /* You can set up a class name to represent "active"
+                ...and change the item below to something other than the word "active" 
+                you can also use --> activeStyle as an attribute as follows:
+                activeStyle={{ 
+                  color: 'fa923f',
+                  textDecoration: 'underline'
+                }}*/ }
+              <li><NavLink
+                to="/"
+                exact
+                activeClassName="active">Home</NavLink></li>
+              <li><NavLink to="/new-post">New Post</NavLink></li>
+              {/* <li><NavLink to={{
                 pathname: '/new-post',
                 hash: '#submit',
                 search: '?quck-submit=true'
-              }}>New Post</Link></li> */}
+              }}>New Post</NavLink></li> */}
             </ul>
           </nav>
         </header>
