@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
 import './Posts.css';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
   state = {
@@ -31,7 +33,11 @@ class Posts extends Component {
     }
 
   postSelectedHandler = (id) => {
-    this.setState({ selectedPostId: id });
+    // this is the programmatic way to navigate to  the detailed post.
+    // using the push method you can add a page to the browser stack
+    // this.props.history.push( '/' + id ); <--can do this too.
+    this.props.history.push({ pathname: '/' + id });
+    
   }
 
   render () {
@@ -39,18 +45,26 @@ class Posts extends Component {
     if (!this.state.error) {
       posts = this.state.posts.map(post => {
         return (
-        <Link to={ `/${post.id}` } key={ post.id }>
+        // Link will allow someone to click the post and get the post detail.
+        //Commenting it out so I can illustrate a programmatic way to also link to post detail
+        // note: need to move the key to the Post component as shown.
+        // <Link to={ `/${post.id}` } key={ post.id }>
           <Post
+            key={ post.id }
             title={ post.title }
             author={ post.author }
             clicked={ () => this.postSelectedHandler(post.id) } />
-        </Link> );
+        // </Link>
+        );
       });
     }
     return (
-      <section className="Posts">
-        { posts }
-      </section>
+      <div>
+        <section className="Posts">
+          { posts }
+        </section>
+        <Route path="/:id" exact component={ FullPost } />
+      </div>
     )
   }
 }

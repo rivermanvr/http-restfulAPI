@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 //import our instance of axios
 //notice that the interceptor is on logging anything anymore.
@@ -8,7 +8,7 @@ import { Route, NavLink } from 'react-router-dom';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
 import './Blog.css';
-import FullPost from './FullPost/FullPost';
+// import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   render () {
@@ -27,7 +27,7 @@ class Blog extends Component {
               <li><NavLink
                 to="/"
                 exact
-                activeClassName="active">Home</NavLink></li>
+                activeClassName="active">Posts</NavLink></li>
               <li><NavLink to="/new-post">New Post</NavLink></li>
               {/* <li><NavLink to={{
                 pathname: '/new-post',
@@ -37,9 +37,12 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={ Posts } />
-        <Route path="/new-post" component={ NewPost } />
-        <Route path="/:id" exact component={ FullPost } />
+        <Switch>
+          <Route path="/" exact component={ Posts } />
+          <Route path="/new-post" component={ NewPost } />
+          {/* moving the following Route to the Posts component */}
+          {/* <Route path="/:id" exact component={ FullPost } /> */}
+        </Switch>
       </div>
     );
   }
