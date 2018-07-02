@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 //import our instance of axios
 //notice that the interceptor is on logging anything anymore.
@@ -43,6 +43,11 @@ class Blog extends Component {
           <Route path="/posts" component={ Posts } />
           {/* moving the following Route to the Posts component */}
           {/* <Route path="/:id" exact component={ FullPost } /> */}
+          {/* If you wanted to redirect the '/' route to /posts: you
+              would use the following, but I am going to do it by
+              using the Redirect component...
+              <Route path="/" component={ Posts } /> */}
+          <Redirect from="/" to="/posts" />
         </Switch>
       </div>
     );
