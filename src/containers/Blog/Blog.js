@@ -25,7 +25,7 @@ class Blog extends Component {
                   textDecoration: 'underline'
                 }}*/ }
               <li><NavLink
-                to="/"
+                to="/posts/"
                 exact
                 activeClassName="active">Posts</NavLink></li>
               <li><NavLink to="/new-post">New Post</NavLink></li>
@@ -37,9 +37,10 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
+        {/* Switch finds the correct route and then stops looking. */}
         <Switch>
-          <Route path="/" exact component={ Posts } />
           <Route path="/new-post" component={ NewPost } />
+          <Route path="/posts" component={ Posts } />
           {/* moving the following Route to the Posts component */}
           {/* <Route path="/:id" exact component={ FullPost } /> */}
         </Switch>
