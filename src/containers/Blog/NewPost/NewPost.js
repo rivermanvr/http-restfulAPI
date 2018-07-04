@@ -13,6 +13,12 @@ class NewPost extends Component {
     }
 
     componentDidMount () {
+      // A second example of using a guard (see blog.js for the first example)
+      // you would:
+      // 1. check to see if the user is authenticated
+      // 2. use props.history to replace this page render with a redirected page
+      //  if auth = false then this.props.history.replace('/posts');
+    
       console.log(this.props);
     }
 
