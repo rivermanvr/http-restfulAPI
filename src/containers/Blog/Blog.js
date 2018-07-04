@@ -11,6 +11,10 @@ import './Blog.css';
 // import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
+  state = {
+    auth: false
+  }
+
   render () {
     return (
       <div className="Blog">
@@ -39,7 +43,7 @@ class Blog extends Component {
         </header>
         {/* Switch finds the correct route and then stops looking. */}
         <Switch>
-          <Route path="/new-post" component={ NewPost } />
+          { this.state.auth ? <Route path="/new-post" component={ NewPost } /> : null}
           <Route path="/posts" component={ Posts } />
           {/* moving the following Route to the Posts component */}
           {/* <Route path="/:id" exact component={ FullPost } /> */}
