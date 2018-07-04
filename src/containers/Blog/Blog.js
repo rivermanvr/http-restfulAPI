@@ -43,15 +43,23 @@ class Blog extends Component {
         </header>
         {/* Switch finds the correct route and then stops looking. */}
         <Switch>
+
           { this.state.auth ? <Route path="/new-post" component={ NewPost } /> : null}
+
           <Route path="/posts" component={ Posts } />
+
           {/* moving the following Route to the Posts component */}
           {/* <Route path="/:id" exact component={ FullPost } /> */}
           {/* If you wanted to redirect the '/' route to /posts: you
               would use the following, but I am going to do it by
               using the Redirect component...
               <Route path="/" component={ Posts } /> */}
-          <Redirect from="/" to="/posts" />
+
+          {/* This next route catches all unknown routes and redirects them to /Posts */}
+          {/* If I comment it out, we can show how to handle a 404 case */}
+          {/* <Redirect from="/" to="/posts" /> */}
+
+          
         </Switch>
       </div>
     );
