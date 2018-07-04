@@ -44,8 +44,12 @@ class Blog extends Component {
         {/* Switch finds the correct route and then stops looking. */}
         <Switch>
 
+          {/* 
+          This is an example of using a guard
           { this.state.auth ? <Route path="/new-post" component={ NewPost } /> : null}
+          */}
 
+          <Route path="/new-post" component={ NewPost } />
           <Route path="/posts" component={ Posts } />
 
           {/* moving the following Route to the Posts component */}
@@ -57,9 +61,13 @@ class Blog extends Component {
 
           {/* This next route catches all unknown routes and redirects them to /Posts */}
           {/* If I comment it out, we can show how to handle a 404 case */}
-          {/* <Redirect from="/" to="/posts" /> */}
+          <Redirect from="/" to="/posts" />
 
-          
+          {/* If you create a route and leave out the path, then you can
+              define a component -->  <Route component= {...} />
+              or use the render method for any unknown route  -->  <Route render={ () => <h1>Not found</h1> /> } />
+          */}
+          {/* <Route render={ () => <h1>Not found</h1> } /> */}
         </Switch>
       </div>
     );
