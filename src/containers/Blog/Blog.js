@@ -12,13 +12,19 @@ import Posts from './Posts/Posts';
 
 // import NewPost from './NewPost/NewPost';
 
-// adding the following so we can load NewPost when it is needed
-
-import asyncComponent from '../../hoc/asyncComponent';
-const AsyncNewPost = asyncComponent();
-
 import './Blog.css';
 // import FullPost from './FullPost/FullPost';
+
+// adding the following so we can load NewPost when it is needed
+// AsyncNewPost will sit idle until it is used somewhere
+// if used it will execute our high order component with
+// a function as an argument, namely the anonymous function below
+// which imports our component.
+
+import asyncComponent from '../../hoc/asyncComponent';
+const AsyncNewPost = asyncComponent(() => {
+  return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
   state = {
@@ -59,7 +65,12 @@ class Blog extends Component {
           { this.state.auth ? <Route path="/new-post" component={ NewPost } /> : null}
           */}
 
-          <Route path="/new-post" component={ NewPost } />
+          {/* 
+          We will be replacing the Route below using the NewPost component with
+          our new asyncNewPost variable which calls NewPost as needed.
+          */}
+          {/* <Route path="/new-post" component={ NewPost } /> */}
+          <Route path="/new-post" component={ AsyncNewPost } />
           <Route path="/posts" component={ Posts } />
 
           {/* moving the following Route to the Posts component */}
