@@ -6,7 +6,17 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 // the interceptor is logging for global axios object, not the instance (which blog.js is using)
 //import axios from 'axios';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+
+// commenting out the original component import (below) in order to
+// allow the component to be loaded only as needed...
+
+// import NewPost from './NewPost/NewPost';
+
+// adding the following so we can load NewPost when it is needed
+
+import asyncComponent from '../../hoc/asyncComponent';
+const AsyncNewPost = asyncComponent();
+
 import './Blog.css';
 // import FullPost from './FullPost/FullPost';
 
