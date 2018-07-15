@@ -6,10 +6,11 @@ import Blog from './containers/Blog/Blog';
 // Note:  in deployment, if you have your code sitting
 // within a base folder, you need to tell React this
 // and configure the basename within BrowserRouter
-// The default is "/", but you might have a folder "my-app" as an example
-// then you would need to configure things as follows:
+// The default is "/", but you might have a folder "my-app" 
+// as an example the default -->  <BrowserRouter basename="/">
+// with "my-app", you would need to configure things as follows:
 /* 
-    <BrowserRouter basename="my-app>
+    <BrowserRouter basename="/my-app">
       <div className="App">
         <Blog />
       </div>
